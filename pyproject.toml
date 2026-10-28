@@ -1,0 +1,41 @@
+[project]
+name = "clause-guard-engine"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "asyncpg>=0.32.0",
+    "fastapi>=0.160.0",
+    "pgvector>=0.5.1",
+    "pydantic>=2.14.1",
+    "pydantic-settings>=2.16.1",
+    "redis>=8.1.0",
+    "sqlalchemy[asyncio]>=2.1.6",
+    "uvicorn[standard]>=0.54.0",
+]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "mypy>=2.4.0",
+    "pytest-asyncio>=1.4.0",
+    "ruff>=0.17.1",
+]
+
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+mypy_path = "."
+packages = ["src", "tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
